@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Page{% endblock %}
+
+{% block content %}
+    <h1>Edit Page - {{ tab_slug }}</h1>
+
+    <!-- ✅ 内容块列表 -->
+    {% for block in blocks %}
+        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <h3>{{ block.title }}</h3>
+            <p>{{ block.content }}</p>
+            {% if block.image_urls %}
+                <p>图片链接: {{ block.image_urls }}</p>
+            {% endif %}
+            <a href="/admin/edit-page/{{ tab_slug }}/delete/{{ block.id }}" onclick="return confirm('确认删除？')">🗑️ 删除</a>
+        </div>
+    {% else %}
+        <p>还没有内容块。</p>
+    {% endfor %}
+
+    <hr>
+
+    <!-- ✅ 新增内容块表单 -->
+    <h2>新增内容块</h2>
+    <form method="post" action="/admin/edit-page/{{ tab_slug }}/add">
+        <label>类型 (block_type):</label><br>
+        <input type="text" name="block_type" required><br>
+
+        <label>标题 (title):</label><br>
+        <input type="text" name="title"><br>
+
+        <label>内容 (content):</label><br>
+        <textarea name="content"></textarea><br>
+
+        <label>图片链接 (image_urls):</label><br>
+        <input type="text" name="image_urls"><br>
+
+        <label>排序顺序 (sort_order):</label><br>
+        <input type="number" name="sort_order" value="0"><br><br>
+
+        <button type="submit">添加内容块</button>
+    </form>
+    {% endblock %}

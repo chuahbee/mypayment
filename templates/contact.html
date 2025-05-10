@@ -1,0 +1,33 @@
+{% extends "base_info.html" %}
+{% block content %}
+
+    {% if request.session.get("admin_logged_in") %}
+    <a href="/admin/edit-contact">Edit Contact Content</a>
+    {% endif %}
+
+    <h1>{{ content.contact_title }}</h1>
+    <p>{{ content.contact_text }}</p>
+    <p><strong>Email:</strong> {{ content.contact_email }}</p>
+    <img src="{{ url_for('static', filename='images/awepaylogo_pay_al.png') }}" alt="Awepay">
+
+    <hr>
+
+    <h2>Contact Us</h2>
+    <form action="/submit-contact" method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
+
+        <label>Message:</label><br>
+        <textarea name="message" required></textarea><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <br>
+    <a href="/">⬅ Back to Home</a>
+
+
+    {% endblock %}

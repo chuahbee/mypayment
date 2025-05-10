@@ -1,0 +1,27 @@
+{% extends "base_info.html" %}
+{% block content %}
+
+<div class="container login">
+  <h1>Admin Login</h1>
+  <div class="myform">
+    <form action="{{ url_for('admin.login') }}" method="post">
+      <div class="mb-3">
+        <label class="form-label">Username:</label>
+        <input class="form-control" type="text" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password:</label>
+        <input class="form-control" type="password" name="password" required>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">Login</button>
+      </div>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('admin.register') }}">Register here</a></p>
+  </div>
+  {% if error %}
+  <p style="color:red;">{{ error }}</p>
+  {% endif %}
+</div>
+
+{% endblock %}

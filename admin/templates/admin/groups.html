@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Manage Groups{% endblock %}
+{% block content %}
+<h2>Groups</h2>
+
+<ul>
+    {% for group in groups %}
+    <li>{{ group.name }} <a href="/admin/page-groups/delete/{{ group.id }}" onclick="return confirm('Delete?')">🗑️ 删除</a></li>
+    {% endfor %}
+</ul>
+
+<form method="post" action="/admin/page-groups/add">
+    <input type="text" name="name" placeholder="新分组名称">
+    <button type="submit">添加</button>
+</form>
+{% endblock %}

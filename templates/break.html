@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <nav class="navbar">
+    <div class="nav-right">
+      <a href="#">Home</a>
+      <a href="#">Service</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="mobile-menu">
+      <button id="menu-toggle" class="menu-toggle">☰</button>
+      <div id="mobile-nav" class="mobile-nav hidden">
+        <a href="#">Home</a>
+        <a href="#">Service</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  {% include "botmenu.html" %}
+
+  {% endblock %}

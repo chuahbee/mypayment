@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>编辑管理员用户</h2>
+<form method="post">
+    <label>用户名:</label><br>
+    <input type="text" name="username" value="{{ user.username }}"><br><br>
+
+    <label>邮箱:</label><br>
+    <input type="email" name="email" value="{{ user.email }}"><br><br>
+
+    <button type="submit">保存</button>
+</form>
+{% endblock %}

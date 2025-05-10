@@ -1,0 +1,23 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 虚拟环境
+.venv/
+venv/
+
+# 环境变量文件
+.env
+
+# 数据库文件（视情况保留或共享）
+*.db
+
+# IDE / 编辑器设置（可选）
+.vscode/
+.idea/
+
+# 部署相关（可选）
+*.log
+*.bak
+*.swp
+.DS_Store

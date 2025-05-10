@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Manage Tabs{% endblock %}
+{% block content %}
+    <h1>标签页管理</h1>
+
+    <!-- ✅ 标签页列表 -->
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>Slug</th>
+                <th>所属分组</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tab in tabs %}
+            <tr>
+                <form method="post" action="/admin/tabs/update">
+                    <td>{{ tab.id }}<input type="hidden" name="tab_id" value="{{ tab.id }}"></td>
+                    <td><input type="text" name="title" value="{{ tab.title }}"></td>
+                    <td><input type="text" name="slug" value="{{ tab.slug }}"></td>
+                    <td>{{ groups.get(tab.group_id, "-") }}</td>
+                    <td>
+                        <button type="submit">更新</button>
+                        <a href="/admin/tabs/delete/{{ tab.id }}" onclick="return confirm('确认删除?')">🗑️ 删除</a>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- ✅ 添加标签页 -->
+    <h2>添加标签页</h2>
+    <form method="post" action="/admin/tabs/add">
+        <label>分组：</label>
+        <select name="group_id">
+            {% for id, name in groups.items() %}
+                <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>标题：</label><br>
+        <input type="text" name="title"><br>
+
+        <label>Slug：</label><br>
+        <input type="text" name="slug"><br>
+
+        <button type="submit">添加</button>
+    </form>
+    {% endblock %}

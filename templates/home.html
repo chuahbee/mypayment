@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session.get("admin") %}
+        <p>You are logged in. <a href="/admin/dashboard">Go to Dashboard</a></p>
+        <p><a href="/admin/logout">Logout</a></p>
+    {% else %}
+        <p><a href="/login">Admin Login</a></p>
+    {% endif %}
+<div id="wrapper" class="flex ">
+
+  <!-- 0. INTRO -->
+  <section class="panel intro">
+    <h1>
+      <span class="span">Welcome to</span>
+      AWEPAY
+    </h1>
+
+    <div class="centerBox">
+      <div class="innerBox">
+        <a href="{{ url_for('api_document_p2p') }}" class="centerBoxLink">
+          <span class="p2p-line"></span>
+          P2P
+          <span class="next-right"></span>
+        </a>
+        <a href="{{ url_for('api_document_creditcard') }}" class="centerBoxLink">
+          <span class="akar-icons--credit-card"></span>
+          CREDIT CARD
+          <span class="next-right"></span>
+        </a>
+
+        <div class="centerBox2">
+          <div class="centerBoxLink">
+            <span class="mingcute--tether-usdt-line"></span>
+            CRYPTO
+          </div>
+          <div class="innerBox">
+            <a href="{{ url_for('api_document_bitfinex') }}" class="centerBoxLink">
+              <img src="{{ url_for('static', filename='images/bitfinex-logo.webp') }}" alt="Awepay">
+              Bitfinex
+              <span class="next-right"></span>
+            </a>
+            <a href="{{ url_for('api_document_awesomepay') }}" class="centerBoxLink">
+              <img src="{{ url_for('static', filename='images/awepaylogo_pay_al.png') }}" alt="Awepay">
+              Awesomepay
+              <span class="next-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- 1. P2P -->
+  <section class="panel p2p">
+
+    <h1>
+      <span class="span">AWEPAY</span>
+      P2P
+    </h1>
+    <div class="centerBox">
+      <div class="innerBox">
+        <a href="{{ url_for('api_document_p2p') }}" class="centerBoxLink">
+          <span class="p2p-line"></span>
+          Let go!
+          <span class="next-right"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CREDIT CARD -->
+  <section class="panel creditcard">
+
+    <h1>
+      <span class="span">AWEPAY</span>
+      Credit Card
+    </h1>
+    <div class="centerBox">
+      <div class="innerBox">
+        <a href="{{ url_for('api_document_creditcard') }}" class="centerBoxLink">
+          <span class="akar-icons--credit-card"></span>
+          Let go!
+          <span class="next-right"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CRYPTO -->
+  <section class="panel crypto">
+
+    <h1>
+      <span class="span">AWEPAY</span>
+      Crypto
+    </h1>
+    <div class="centerBox">
+      <div class="innerBox">
+        <a href="{{ url_for('api_document_bitfinex')}}" class="centerBoxLink">
+          <img src="{{ url_for('static', filename='images/bitfinex-logo.webp') }}" alt="Awepay">
+          Bitfinex
+          <span class="next-right"></span>
+        </a>
+        <a href="{{ url_for('api_document_awesomepay')}}" class="centerBoxLink">
+          <img src="{{ url_for('static', filename='images/awepaylogo_pay_al.png') }}" alt="Awepay">
+          Awesomepay
+          <span class="next-right"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ← 左箭头 -->
+<button id="prevBtn" class="arrow left my">❮</button>
+<!-- → 右箭头 -->
+<button id="nextBtn" class="arrow right my">❯</button>
+
+{% include "botmenu.html" %}
+
+
+
+{% endblock %}
